@@ -1,0 +1,57 @@
+:root {
+  --bg: #07060a;
+  --panel: #0f0e14;
+  --muted: #9aa0b2;
+  --neon1: #9b59ff;
+  --neon2: #7b2be6;
+}
+
+* {
+    color: white;
+}
+body{
+	background-color: black;
+}
+/* #mp{
+    color: var(--neon1);
+    text-align: center;
+    font-weight: bolder;
+    background-color: black;
+    text-shadow: 0 0 10px var(--neon2);
+    
+
+} */
+
+#mp {
+  color: var(--neon1);
+  text-align: center;
+  font-weight: bolder;
+  background-color: black;
+  text-shadow: 
+    0 0 15px var(--neon1),   /* Inner core matches text color */
+    0 0 25px var(--neon2),  /* Middle layer creates transition */
+    0 0 50px var(--neon2);  /* Outer layer gives wide spread */
+    /* filter:blur(1px); */
+}
+.name {
+    color: var(--neon1);
+    text-shadow: 
+    0 0 15px var(--neon1),
+    0 0 25px var(--neon2),
+    0 0 50px var(--neon2);
+}
+.heading, .name {
+    font-size:x-large;
+
+}
+
+.box {
+    margin: auto;
+    /* background-color: red; */
+    border-width: 2px;
+    border-style: solid;
+    height: 200px;
+    width: 200px;
+    border-radius: 5px;
+    border-color: white;
+}

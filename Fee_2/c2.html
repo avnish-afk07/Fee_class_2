@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            /* align-items: center; */
+        }
+        .box{
+            width: 40%;
+            height: 600px;
+            border: 2px solid black;
+            background-color: rgb(145, 211, 208);
+            overflow: auto;
+            display: grid;
+            /* flex-direction: column-reverse; */
+            /* justify-content: flex-end; */
+            /* align-items: flex-start; */
+            /* justify-content: works on main axis and align-items works on cdross axis */
+            justify-content: center;
+            align-items: center;
+            grid-template-columns: repeat(4, 150px);
+            grid-template-rows: repeat(3, 200px);
+        }
+        .cbox{
+            color: rgb(255, 255, 255);
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            background-color: blueviolet;
+            /* margin: 5px; */
+            /* gap: 10px; */
+            text-align: center;
+            align-content: center;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="cbox">1</div>
+        <div class="cbox">2</div>
+        <div class="cbox">3</div>
+        <div class="cbox">4</div>
+        <div class="cbox">5</div>
+    </div>
+</body>
+</html>

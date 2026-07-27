@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* AI ChatBox */
+        .chat {
+            display: flex;
+        }
+
+        .chatbox {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+
+            width: 40px;
+            height: 35px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border: none;
+            border-radius: 45%;
+
+            /* background: linear-gradient(135deg, #00b4db, #0083b0); */
+            background-color: rgb(66, 137, 137);
+            color: white;
+
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+
+            transition: all 0.3s ease;
+        }
+
+        .chatbox:hover {
+            transform: scale(1.2);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+        }
+
+
+        /* Background */
+
+        body {
+
+            background: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1600") center center/cover no-repeat fixed;
+
+            min-height: 200vh;
+        }
+
+        /* Dark Overlay */
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .45);
+            z-index: -1;
+        }
+
+        /* Navbar */
+
+        .navbar {
+
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 70px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 0 50px;
+
+            background: rgba(0, 0, 0, .35);
+            backdrop-filter: blur(10px);
+
+            color: white;
+
+            z-index: 1000;
+        }
+
+        .logo {
+
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            transition: .3s;
+        }
+
+        .nav-links a:hover {
+
+            color: #00d4ff;
+        }
+
+        .nav-right {
+
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        /* Notification */
+
+        .notification {
+
+            position: relative;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .badge {
+
+            position: absolute;
+            top: -8px;
+            right: -10px;
+
+            width: 20px;
+            height: 20px;
+
+            border-radius: 50%;
+
+            background: red;
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 12px;
+        }
+
+        /* Logout */
+
+        /* .logout-btn{
+
+    padding:10px 18px;
+
+    border:none;
+    border-radius:8px;
+
+    background:#ff3b3b;
+    color:white;
+
+    cursor:pointer;
+    transition:.3s;
+} */
+
+        /* .logout-btn:hover{
+
+    background:#d60000;
+} */
+
+        /* Container */
+
+        .container {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            min-height: 100vh;
+
+            padding-top: 70px;
+        }
+
+        /* Login Box */
+
+        .login-box {
+
+            width: 380px;
+
+            padding: 40px;
+
+            border-radius: 20px;
+
+            background: rgba(255, 255, 255, .15);
+
+            backdrop-filter: blur(20px);
+
+            color: white;
+
+            box-shadow: 0 15px 40px rgba(0, 0, 0, .4);
+        }
+
+        .login-box h2 {
+
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 32px;
+        }
+
+        .login-box input {
+
+            width: 100%;
+
+            padding: 14px;
+
+            margin: 12px 0;
+
+            border: none;
+            border-radius: 10px;
+
+            outline: none;
+
+            background: rgba(255, 255, 255, .2);
+
+            color: white;
+
+            font-size: 16px;
+        }
+
+        .login-box input::placeholder {
+
+            color: #eee;
+        }
+
+        .login-box button {
+
+            width: 100%;
+
+            padding: 14px;
+
+            margin-top: 18px;
+
+            border: none;
+            border-radius: 10px;
+
+            background: #00b4ff;
+
+            color: white;
+
+            font-size: 18px;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .login-box button:hover {
+
+            background: #0088cc;
+        }
+
+        /* Dummy Content */
+
+        .content {
+
+            width: 80%;
+            margin: 100px auto;
+
+            color: white;
+            text-align: center;
+        }
+
+        .content h1 {
+
+            margin-bottom: 20px;
+        }
+
+        .content p {
+
+            line-height: 1.8;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">My Website</div>
+
+        <ul class="nav-links">
+
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+
+        </ul>
+
+        <div class="nav-right">
+
+            <div class="notification">
+                <i class="fa-solid fa-bell"></i>
+                <span class="badge">5</span>
+            </div>
+
+            <!-- <button class="logout-btn">Logout</button> -->
+
+        </div>
+
+    </nav>
+    <div class="chat">
+        <div class="chatbox">AI</div>
+    </div>
+
+    <div class="container">
+
+        <div class="login-box">
+
+            <h2>Welcome Back</h2>
+
+            <form>
+
+                <input type="text" placeholder="Username">
+
+                <input type="password" placeholder="Password">
+
+                <button>Login</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <div class="content">
+
+        <h1>Scrollable Content</h1>
+
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+
+        <br><br>
+
+        <p>
+            Scroll the page and notice that the background image remains fixed while
+            the content moves over it. The login box scrolls away naturally with the
+            page, while the background stays stationary, creating a modern parallax-like
+            effect.
+        </p>
+
+        <br><br><br><br><br><br><br><br><br><br>
+
+        <h1>More Content</h1>
+
+        <p>
+            Keep scrolling...
+        </p>
+
+        <br><br><br><br><br><br><br><br><br><br>
+
+        <h1>End of Page</h1>
+
+    </div>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login / Signup Demo</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#2b5876,#4e4376);
+}
+
+.box{
+    width:360px;
+    padding:30px;
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(10px);
+    border-radius:15px;
+    color:#fff;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.inputBox{
+    position:relative;
+    margin:15px 0;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    outline:none;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#00b4ff;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    margin-top:15px;
+}
+
+button:hover{
+    background:#0088cc;
+}
+
+.toggle{
+    text-align:center;
+    margin-top:15px;
+}
+
+.toggle a{
+    color:#ffd700;
+    cursor:pointer;
+    text-decoration:none;
+}
+
+.msg{
+    margin-top:15px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.eye{
+    position:absolute;
+    right:12px;
+    top:50%;
+    transform:translateY(-50%);
+    cursor:pointer;
+}
+
+.tooltip{
+    position:absolute;
+    left:0;
+    top:-45px;
+    background:black;
+    color:white;
+    padding:8px;
+    border-radius:6px;
+    font-size:12px;
+    display:none;
+}
+
+.tooltip button{
+    width:auto;
+    margin-left:8px;
+    padding:2px 6px;
+    background:red;
+    font-size:10px;
+}
+
+.inputBox:hover .tooltip{
+    display:block;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2 id="title">Login</h2>
+
+<div class="inputBox">
+<div class="tooltip">
+Enter your username
+<button onclick="closeTip(this)">✖</button>
+</div>
+<input id="username" placeholder="Enter Username">
+</div>
+
+<div class="inputBox">
+<div class="tooltip">
+Enter your password
+<button onclick="closeTip(this)">✖</button>
+</div>
+<input id="password" type="password" placeholder="Enter Password">
+<span class="eye" onclick="togglePassword()">👁</span>
+</div>
+
+<button onclick="submitForm()">Login</button>
+
+<div class="toggle">
+<a onclick="toggleMode()" id="toggleText">Create Account</a>
+</div>
+
+<div class="msg" id="msg"></div>
+
+</div>
+
+<script>
+
+let signup=false;
+
+function toggleMode(){
+
+signup=!signup;
+
+document.getElementById("title").innerText=signup?"Signup":"Login";
+
+document.querySelector("button").innerText=signup?"Signup":"Login";
+
+document.getElementById("toggleText").innerText=signup?"Already have an account? Login":"Create Account";
+
+document.getElementById("msg").innerHTML="";
+}
+
+function togglePassword(){
+
+let p=document.getElementById("password");
+
+p.type=p.type==="password"?"text":"password";
+}
+
+function closeTip(btn){
+
+btn.parentElement.style.display="none";
+}
+
+function submitForm(){
+
+let user=document.getElementById("username").value.trim();
+
+let pass=document.getElementById("password").value.trim();
+
+let msg=document.getElementById("msg");
+
+if(user===""||pass===""){
+msg.style.color="yellow";
+msg.innerHTML="Fill all fields!";
+return;
+}
+
+let users=JSON.parse(localStorage.getItem("users"))||{};
+
+if(signup){
+
+if(users[user]){
+msg.style.color="orange";
+msg.innerHTML="Username already exists!";
+return;
+}
+
+users[user]=pass;
+
+localStorage.setItem("users",JSON.stringify(users));
+
+msg.style.color="lightgreen";
+msg.innerHTML="Signup Successful!";
+
+toggleMode();
+
+}else{
+
+if(users[user] && users[user]===pass){
+
+msg.style.color="lightgreen";
+msg.innerHTML="Login Successful 🎉";
+
+}else{
+
+msg.style.color="red";
+msg.innerHTML="Invalid Username or Password";
+
+}
+
+}
+
+}
+</script>
+
+</body>
+</html> -->
