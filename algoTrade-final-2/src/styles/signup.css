@@ -1,0 +1,13 @@
+.signup-page .auth-form {
+  max-width: 440px;
+}
+
+.signup-page .auth-hero-candles {
+  opacity: 0.7;
+}
+
+@media (max-width: 480px) {
+  .signup-page .auth-form {
+    max-width: 100%;
+  }
+}

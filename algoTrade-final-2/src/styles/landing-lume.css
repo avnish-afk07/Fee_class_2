@@ -1,0 +1,441 @@
+/* ============================================================
+   Lume-style landing frontage
+   Scoped entirely under .lume-page so nothing else in the app
+   is affected by these rules.
+   ============================================================ */
+
+.lume-page {
+  /* Pulled from the same tokens the dashboard uses (see global.css)
+     so the marketing frontage and the logged-in app read as one
+     product instead of two different color systems. */
+  --lume-bg: var(--color-bg);
+  --lume-text: var(--color-text-primary);
+  --lume-text-dim: var(--color-text-secondary);
+  --lume-text-faint: var(--color-text-muted);
+  --lume-border: var(--color-border);
+  --lume-serif: 'Instrument Serif', 'Playfair Display', Georgia, serif;
+
+  position: relative;
+  min-height: 100vh;
+  background: var(--lume-bg);
+  color: var(--lume-text);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.lume-page * {
+  box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------- */
+/* Nav                                                          */
+/* ---------------------------------------------------------- */
+.lume-nav {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px 40px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.lume-nav-left,
+.lume-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex: 1;
+}
+
+.lume-nav-right {
+  justify-content: flex-end;
+}
+
+.lume-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: var(--lume-text);
+  opacity: 0.9;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.lume-nav-link {
+  font-size: 0.86rem;
+  color: var(--lume-text-dim);
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.lume-nav-link:hover {
+  color: var(--lume-text);
+}
+
+.lume-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--lume-serif);
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+  color: var(--lume-text);
+}
+
+.lume-logo-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  box-shadow: 0 0 12px var(--color-primary-dim);
+  flex-shrink: 0;
+}
+
+.lume-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 20px;
+  border-radius: 999px;
+  background: var(--gradient-brand);
+  color: #06101f;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lume-pill-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lift);
+}
+
+/* ---------------------------------------------------------- */
+/* Hero                                                          */
+/* ---------------------------------------------------------- */
+.lume-hero {
+  position: relative;
+  padding: 70px 40px 90px;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 640px;
+}
+
+.lume-hero-glow {
+  position: absolute;
+  inset: -10% -5% -18% -5%;
+  background:
+    radial-gradient(circle at 50% 18%, var(--color-surface-hover), transparent 62%),
+    radial-gradient(circle at 20% 55%, var(--color-primary-dim), transparent 60%),
+    radial-gradient(circle at 80% 50%, rgba(0, 212, 255, 0.08), transparent 60%),
+    radial-gradient(circle at 50% 92%, var(--color-surface-hover), transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lume-hero-content {
+  position: relative;
+  z-index: 5;
+  max-width: 620px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.lume-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--lume-border);
+  background: var(--color-surface);
+  color: var(--lume-text-dim);
+  font-size: 0.78rem;
+  margin-bottom: 30px;
+}
+
+.lume-badge svg {
+  width: 13px;
+  height: 13px;
+  opacity: 0.75;
+}
+
+.lume-title {
+  font-family: var(--lume-serif);
+  font-weight: 400;
+  font-size: 4.4rem;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--lume-text);
+  margin-bottom: 26px;
+}
+
+.lume-subtitle {
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--lume-text-dim);
+  max-width: 420px;
+  margin-bottom: 36px;
+}
+
+.lume-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 32px;
+  border-radius: 999px;
+  background: var(--gradient-brand);
+  color: #06101f;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-lift);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 56px;
+}
+
+.lume-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 34px 70px -18px rgba(0, 212, 255, 0.4);
+}
+
+.lume-coins {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 34px;
+}
+
+.lume-coin {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.86rem;
+  color: var(--lume-text-dim);
+}
+
+.lume-coin svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------- */
+/* Floating card visuals                                        */
+/* ---------------------------------------------------------- */
+.lume-card-wrap {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.lume-card-wrap.left {
+  left: -6%;
+  bottom: -18%;
+  animation: lumeFloatLeft 9s ease-in-out infinite;
+}
+
+.lume-card-wrap.right {
+  right: -4%;
+  top: -6%;
+  animation: lumeFloatRight 10.5s ease-in-out infinite;
+}
+
+.lume-card-inner {
+  transition: transform 0.4s ease-out;
+}
+
+.lume-card {
+  width: 380px;
+  height: 240px;
+  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 40px 80px -20px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.lume-card.visa {
+  transform: rotate(-18deg);
+  background:
+    linear-gradient(135deg, #0a0d14 0%, #121a2b 30%, #2f5fd6 48%, #1c8fb0 58%, #101826 74%, #0a0d14 100%);
+}
+
+.lume-card.back {
+  transform: rotate(24deg);
+  background:
+    linear-gradient(135deg, #0a0d14 0%, #121a2b 25%, #274a8f 42%, #00b8d9 55%, #123a52 66%, #0e1420 82%, #0a0d14 100%);
+}
+
+.lume-chip {
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  width: 46px;
+  height: 34px;
+  border-radius: 6px;
+  background: repeating-linear-gradient(
+      90deg,
+      #cfcfd6 0px,
+      #cfcfd6 6px,
+      #9a9aa2 6px,
+      #9a9aa2 8px
+    ),
+    linear-gradient(160deg, #d9d9de, #8f8f97);
+  background-blend-mode: overlay;
+  opacity: 0.85;
+}
+
+.lume-card.back .lume-chip {
+  top: 40%;
+  left: auto;
+  right: 34px;
+  transform: translateY(-50%);
+}
+
+.lume-wordmark {
+  position: absolute;
+  bottom: 24px;
+  right: 28px;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  color: rgba(245, 245, 242, 0.9);
+}
+
+@keyframes lumeFloatLeft {
+  0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+  50% { transform: translate(10px, -22px) rotate(-2deg); }
+}
+
+@keyframes lumeFloatRight {
+  0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+  50% { transform: translate(-12px, 20px) rotate(2deg); }
+}
+
+/* ---------------------------------------------------------- */
+/* Feature strip                                                 */
+/* ---------------------------------------------------------- */
+.lume-features {
+  position: relative;
+  z-index: 5;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--lume-border);
+}
+
+.lume-feature {
+  padding: 34px 40px 60px;
+  border-right: 1px solid var(--lume-border);
+}
+
+.lume-feature:last-child {
+  border-right: none;
+}
+
+.lume-feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-bottom: 20px;
+  color: var(--lume-text);
+  opacity: 0.9;
+}
+
+.lume-feature-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.lume-feature h3 {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--lume-text);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.lume-feature p {
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--lume-text-faint);
+  max-width: 300px;
+}
+
+/* ---------------------------------------------------------- */
+/* Responsive                                                    */
+/* ---------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .lume-card {
+    width: 300px;
+    height: 190px;
+  }
+  .lume-title {
+    font-size: 3.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .lume-nav {
+    padding: 20px 20px;
+  }
+  .lume-nav-left {
+    gap: 16px;
+  }
+  .lume-nav-link.wp {
+    display: none;
+  }
+  .lume-hero {
+    padding: 50px 20px 60px;
+    min-height: 520px;
+  }
+  .lume-title {
+    font-size: 2.5rem;
+  }
+  .lume-subtitle {
+    font-size: 0.94rem;
+  }
+  .lume-card-wrap {
+    display: none;
+  }
+  .lume-features {
+    grid-template-columns: 1fr;
+  }
+  .lume-feature {
+    border-right: none;
+    border-bottom: 1px solid var(--lume-border);
+    padding: 28px 20px;
+  }
+  .lume-feature:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .lume-title {
+    font-size: 2.05rem;
+  }
+  .lume-coins {
+    gap: 20px;
+  }
+}

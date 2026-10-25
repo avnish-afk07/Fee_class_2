@@ -1,0 +1,132 @@
+/* NEW (PE-2): small styles for the cart, checkout and About pages.
+   Everything else reuses the existing classes (dashboard-card, market-asset-row, ...). */
+
+/* navbar cart chip: item count + total */
+.cart-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  font-size: 0.85rem;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.cart-chip:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.cart-chip-count {
+  min-width: 20px;
+  padding: 1px 6px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-dim);
+  text-align: center;
+  font-size: 0.78rem;
+}
+
+.cart-chip-total {
+  color: var(--color-text-secondary);
+}
+
+/* cart + checkout: list on the left, summary on the right */
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .cart-layout {
+    grid-template-columns: 1fr 340px;
+  }
+}
+
+.cart-row {
+  flex-wrap: wrap;
+}
+
+.cart-row .market-asset-link {
+  flex: 1;
+  min-width: 160px;
+}
+
+.qty-stepper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.qty-stepper button {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+.qty-stepper button:hover:not(:disabled) {
+  border-color: var(--color-primary);
+}
+
+.qty-stepper button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.cart-summary .balance-hero-value {
+  margin: 6px 0 14px;
+}
+
+.cart-summary .btn {
+  margin-top: 16px;
+}
+
+.cart-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.cart-actions .btn {
+  margin-top: 0;
+}
+
+.checkout-title {
+  margin-bottom: 16px;
+  font-size: 1.05rem;
+}
+
+/* About page */
+.about-content {
+  max-width: 520px;
+}
+
+.about-content p {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* small screens: let the Market rows wrap so the extra "Add to Cart" button
+   doesn't squeeze the coin name, and keep the navbar chip compact */
+@media (max-width: 600px) {
+  .market-asset-row {
+    flex-wrap: wrap;
+  }
+
+  .market-asset-row .market-asset-link {
+    flex: 1 1 55%;
+    min-width: 0;
+  }
+
+  .cart-chip-total {
+    display: none;
+  }
+}
